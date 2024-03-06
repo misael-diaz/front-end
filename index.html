@@ -4,10 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSM | HOME</title>
-    <script src="js/script.js"></script>
   </head>
   <body onload="onLoad()">
     <div id="message">
     </div>
+    <div>
+      <form>
+	<div>
+	  <label for="file">Select file to submit</label>
+	  <input type="file" name="file" id="file" accept=".txt" required/>
+	</div>
+	<div>
+	  <button id="send">Submit</button>
+	</div>
+      </form>
+    </div>
   </body>
+  <script src="js/script.js"></script>
 </html>
