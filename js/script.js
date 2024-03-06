@@ -1,3 +1,5 @@
+let gcontent = ''
+
 const onLoad = async () => {
 	const message = document.getElementById("message")
 	try {
@@ -12,3 +14,50 @@ const onLoad = async () => {
 		console.log(`caught error: ${err.message}`)
 	}
 }
+
+const input = document.querySelector("input")
+input.addEventListener(
+	"change",
+	async () => {
+
+		const file = input.files[0]
+		const reader = new FileReader()
+		reader.addEventListener(
+			"load",
+			() => {
+				gcontent += reader.result
+			},
+			false
+		)
+
+		if (file) {
+			reader.readAsText(file)
+		}
+	},
+	false
+)
+
+const send = document.querySelector("#send")
+send.addEventListener(
+	"click",
+	async (e) => {
+		e.preventDefault()
+		const url = "http://localhost:8080/api/lmp/run"
+		const opt = {
+			method: "POST",
+			mode: "cors",
+			headers: {
+				"Content-Type": "text/plain"
+			},
+			body: gcontent
+		}
+		try {
+			const response = await fetch(url, opt)
+			const data = await response.json()
+			console.log(data)
+		} catch (err) {
+			console.log(`${err}`)
+		}
+	},
+	false
+)
