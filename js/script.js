@@ -21,12 +21,15 @@ input.addEventListener(
 	() => {
 		const file = input.files[0]
 		const reader = new FileReader()
+
+		const loadEventHandler = () => {
+			gcontent = ''
+			gcontent += reader.result
+		}
+
 		reader.addEventListener(
 			"load",
-			() => {
-				gcontent = ''
-				gcontent += reader.result
-			},
+			() => loadEventHandler(),
 			false
 		)
 
