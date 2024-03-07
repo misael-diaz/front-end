@@ -38,6 +38,14 @@ input.addEventListener(
 	false
 )
 
+input.addEventListener(
+	"cancel",
+	e => {
+		return
+	},
+	false
+)
+
 const send = document.querySelector("#send")
 send.addEventListener(
 	"click",
