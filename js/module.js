@@ -6,11 +6,11 @@ export const onLoad = async () => {
 		console.log("checking NodeAPI availability ...")
 		const response = await fetch("http://localhost:8080/")
 		const data = await response.json()
-		message.innerHTML = "NodeAPI is online"
+		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>"
 		console.log("done")
 		console.log(data)
 	} catch (err) {
-		message.innerHTML = "NodeAPI is offline"
+		message.innerHTML = "NodeAPI: <strong style='color:red'>offline</strong>"
 		console.log(`caught error: ${err.message}`)
 	}
 }
