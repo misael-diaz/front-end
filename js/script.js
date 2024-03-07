@@ -54,6 +54,7 @@ send.addEventListener(
 		if (gcontent.length === 0) {
 			return
 		}
+		const status = document.getElementById("status")
 		const url = "http://localhost:8080/api/lmp/run"
 		const opt = {
 			method: "POST",
@@ -68,8 +69,20 @@ send.addEventListener(
 			const data = await response.json()
 			console.log(data)
 			gcontent = ''
+			status.innerHTML = "successful file upload"
+			status.style.color = 'blue'
+			status.style['border-style'] = 'solid'
+			status.style['border-width'] = 'thin'
+			status.style['border-color'] = 'blue'
+			status.style['background-color'] = 'lightblue'
 		} catch (err) {
 			console.log(`${err}`)
+			status.innerHTML = `error: ${err}`
+			status.style.color = 'red'
+			status.style['border-style'] = 'solid'
+			status.style['border-width'] = 'thin'
+			status.style['border-color'] = 'red'
+			status.style['background-color'] = 'lightred'
 		}
 	},
 	false
