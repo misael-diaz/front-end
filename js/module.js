@@ -67,7 +67,7 @@ export const clickEventHandler = async (e) => {
 		status.style['background-color'] = 'lightblue'
 	} catch (err) {
 		console.log(`${err}`)
-		status.innerHTML = `error: ${err}`
+		status.innerHTML = `error: ${err.message}`
 		status.style.color = 'red'
 		status.style['border-style'] = 'solid'
 		status.style['border-width'] = 'thin'
