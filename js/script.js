@@ -35,28 +35,11 @@ const changeEventHandler = () => {
 	}
 }
 
-const input = document.querySelector("input")
-input.addEventListener(
-	"change",
-	() => {
-		changeEventHandler()
-	},
-	false
-)
-
 const cancelEventHandler = () => {
 	return
 }
 
-input.addEventListener(
-	"cancel",
-	() => {
-		cancelEventHandler()
-	},
-	false
-)
-
-clickEventHandler = async (e) =>  {
+const clickEventHandler = async (e) => {
 	e.preventDefault()
 	if (gcontent.length === 0) {
 		return
@@ -92,6 +75,23 @@ clickEventHandler = async (e) =>  {
 		status.style['background-color'] = 'lightred'
 	}
 }
+
+const input = document.querySelector("input")
+input.addEventListener(
+	"change",
+	() => {
+		changeEventHandler()
+	},
+	false
+)
+
+input.addEventListener(
+	"cancel",
+	() => {
+		cancelEventHandler()
+	},
+	false
+)
 
 const send = document.querySelector("#send")
 send.addEventListener(
