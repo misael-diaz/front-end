@@ -25,6 +25,7 @@ input.addEventListener(
 		reader.addEventListener(
 			"load",
 			() => {
+				gcontent = ''
 				gcontent += reader.result
 			},
 			false
@@ -37,11 +38,23 @@ input.addEventListener(
 	false
 )
 
+input.addEventListener(
+	"cancel",
+	e => {
+		return
+	},
+	false
+)
+
 const send = document.querySelector("#send")
 send.addEventListener(
 	"click",
 	async (e) => {
 		e.preventDefault()
+		if (gcontent.length === 0) {
+			return
+		}
+		const status = document.getElementById("status")
 		const url = "http://localhost:8080/api/lmp/run"
 		const opt = {
 			method: "POST",
@@ -55,8 +68,21 @@ send.addEventListener(
 			const response = await fetch(url, opt)
 			const data = await response.json()
 			console.log(data)
+			gcontent = ''
+			status.innerHTML = "successful file upload"
+			status.style.color = 'blue'
+			status.style['border-style'] = 'solid'
+			status.style['border-width'] = 'thin'
+			status.style['border-color'] = 'blue'
+			status.style['background-color'] = 'lightblue'
 		} catch (err) {
 			console.log(`${err}`)
+			status.innerHTML = `error: ${err}`
+			status.style.color = 'red'
+			status.style['border-style'] = 'solid'
+			status.style['border-width'] = 'thin'
+			status.style['border-color'] = 'red'
+			status.style['background-color'] = 'lightred'
 		}
 	},
 	false
