@@ -44,10 +44,14 @@ input.addEventListener(
 	false
 )
 
+const cancelEventHandler = () => {
+	return
+}
+
 input.addEventListener(
 	"cancel",
-	e => {
-		return
+	() => {
+		cancelEventHandler()
 	},
 	false
 )
