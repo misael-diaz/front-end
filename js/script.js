@@ -43,6 +43,9 @@ send.addEventListener(
 	"click",
 	async (e) => {
 		e.preventDefault()
+		if (gcontent.length === 0) {
+			return
+		}
 		const url = "http://localhost:8080/api/lmp/run"
 		const opt = {
 			method: "POST",
