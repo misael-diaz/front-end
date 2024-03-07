@@ -1,4 +1,13 @@
 import { changeEventHandler, cancelEventHandler, clickEventHandler } from "./module.js"
+import { onLoad } from "./module.js"
+
+window.addEventListener(
+	"load",
+	() => {
+		onLoad()
+	},
+	false
+)
 
 const input = document.querySelector("input")
 input.addEventListener(
