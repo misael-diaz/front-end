@@ -18,8 +18,7 @@ const onLoad = async () => {
 const input = document.querySelector("input")
 input.addEventListener(
 	"change",
-	async () => {
-
+	() => {
 		const file = input.files[0]
 		const reader = new FileReader()
 		reader.addEventListener(
@@ -46,44 +45,48 @@ input.addEventListener(
 	false
 )
 
+clickEventHandler = async (e) =>  {
+	e.preventDefault()
+	if (gcontent.length === 0) {
+		return
+	}
+	const status = document.getElementById("status")
+	const url = "http://localhost:8080/api/lmp/run"
+	const opt = {
+		method: "POST",
+		mode: "cors",
+		headers: {
+			"Content-Type": "text/plain"
+		},
+		body: gcontent
+	}
+	try {
+		const response = await fetch(url, opt)
+		const data = await response.json()
+		console.log(data)
+		gcontent = ''
+		status.innerHTML = "successful file upload"
+		status.style.color = 'blue'
+		status.style['border-style'] = 'solid'
+		status.style['border-width'] = 'thin'
+		status.style['border-color'] = 'blue'
+		status.style['background-color'] = 'lightblue'
+	} catch (err) {
+		console.log(`${err}`)
+		status.innerHTML = `error: ${err}`
+		status.style.color = 'red'
+		status.style['border-style'] = 'solid'
+		status.style['border-width'] = 'thin'
+		status.style['border-color'] = 'red'
+		status.style['background-color'] = 'lightred'
+	}
+}
+
 const send = document.querySelector("#send")
 send.addEventListener(
 	"click",
 	async (e) => {
-		e.preventDefault()
-		if (gcontent.length === 0) {
-			return
-		}
-		const status = document.getElementById("status")
-		const url = "http://localhost:8080/api/lmp/run"
-		const opt = {
-			method: "POST",
-			mode: "cors",
-			headers: {
-				"Content-Type": "text/plain"
-			},
-			body: gcontent
-		}
-		try {
-			const response = await fetch(url, opt)
-			const data = await response.json()
-			console.log(data)
-			gcontent = ''
-			status.innerHTML = "successful file upload"
-			status.style.color = 'blue'
-			status.style['border-style'] = 'solid'
-			status.style['border-width'] = 'thin'
-			status.style['border-color'] = 'blue'
-			status.style['background-color'] = 'lightblue'
-		} catch (err) {
-			console.log(`${err}`)
-			status.innerHTML = `error: ${err}`
-			status.style.color = 'red'
-			status.style['border-style'] = 'solid'
-			status.style['border-width'] = 'thin'
-			status.style['border-color'] = 'red'
-			status.style['background-color'] = 'lightred'
-		}
+		await clickEventHandler(e)
 	},
 	false
 )
