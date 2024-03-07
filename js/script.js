@@ -25,6 +25,7 @@ input.addEventListener(
 		reader.addEventListener(
 			"load",
 			() => {
+				gcontent = ''
 				gcontent += reader.result
 			},
 			false
@@ -55,6 +56,7 @@ send.addEventListener(
 			const response = await fetch(url, opt)
 			const data = await response.json()
 			console.log(data)
+			gcontent = ''
 		} catch (err) {
 			console.log(`${err}`)
 		}
