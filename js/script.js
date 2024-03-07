@@ -15,27 +15,31 @@ const onLoad = async () => {
 	}
 }
 
+const changeEventHandler = () => {
+	const file = input.files[0]
+	const reader = new FileReader()
+
+	const loadEventHandler = () => {
+		gcontent = ''
+		gcontent += reader.result
+	}
+
+	reader.addEventListener(
+		"load",
+		() => loadEventHandler(),
+		false
+	)
+
+	if (file) {
+		reader.readAsText(file)
+	}
+}
+
 const input = document.querySelector("input")
 input.addEventListener(
 	"change",
 	() => {
-		const file = input.files[0]
-		const reader = new FileReader()
-
-		const loadEventHandler = () => {
-			gcontent = ''
-			gcontent += reader.result
-		}
-
-		reader.addEventListener(
-			"load",
-			() => loadEventHandler(),
-			false
-		)
-
-		if (file) {
-			reader.readAsText(file)
-		}
+		changeEventHandler()
 	},
 	false
 )
