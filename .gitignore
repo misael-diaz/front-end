@@ -1,4 +1,8 @@
 *.swp
 *.txt
 *.lmp
+*.svg
+*.png
+*.jpg
+*.jpeg
 *TODO*
