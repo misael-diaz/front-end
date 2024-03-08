@@ -7,6 +7,9 @@ export const onLoad = async () => {
 		const response = await fetch("http://localhost:8080/")
 		const data = await response.json()
 		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>"
+		setTimeout(() => {
+			message.style.opacity = 0
+		}, 4000)
 		console.log("done")
 		console.log(data)
 	} catch (err) {
