@@ -97,7 +97,7 @@ export const clickEventHandler = async (e) => {
 
 FrontEnd Demo						March 7, 2024
 
-source: module.js
+source: js/main/module.js
 author: @misael-diaz
 
 Copyright (c) 2024 Misael Díaz-Maldonado
