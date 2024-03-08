@@ -3,23 +3,40 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSM | HOME</title>
+    <title>CSM | Chatbot</title>
     <script type="module" src="js/module.js"></script>
     <script type="module" src="js/script.js"></script>
   </head>
   <body>
-    <div id="message">
-    </div>
+    <header>
+      <p>
+	<img src="assets/img/logo.jpg" style="width:128px;height:auto"/>
+      </p>
+      <h1>
+	CSM Chatbot
+      </h1>
+      <h2>
+	Molecular Dynamics Simulations
+      </h2>
+    </header>
+    <p>
+      To submit a Molecular Dynamics simulation to our high performance computing
+      facilities please provide the LAMMPS configuration file. If you are new to
+      LAMMPS, please check out this
+      <a href="https://lammpstutorials.github.io/index.html">tutorial</a> first.
+    </p>
     <div>
       <form>
 	<div>
-	  <label for="file">Select file to submit</label>
+	  <label for="file">Browse for the LAMMPS configuration file</label>
 	  <input type="file" name="file" id="file" accept=".txt" required/>
 	</div>
 	<div>
 	  <button id="send">Submit</button>
 	</div>
       </form>
+      <div id="message">
+      </div>
       <div id="status">
       </div>
       <div>
