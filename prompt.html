@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSM | Developer</title>
+    <script type="module" src="js/system/module.js"></script>
+    <script type="module" src="js/system/prompt.js"></script>
+  </head>
+  <body>
+    <header>
+      <p>
+	<a href="index.html">
+	  <img src="assets/img/logo.jpg" style="width:128px;height:auto"/>
+	</a>
+      </p>
+      <h1>
+	CSM Prompt
+      </h1>
+      <h2>
+	System API
+      </h2>
+    </header>
+    <div>
+      <form>
+	<div>
+	  <label for="cmd">System Command</label>
+	  <input type="text" name="cmd" id="cmd" required/>
+	</div>
+	<div>
+	  <button id="execute">Execute</button>
+	</div>
+      </form>
+      <div id="message">
+      </div>
+      <div id="status">
+      </div>
+      <div>
+	<div id="head">
+	</div>
+	<div id="output">
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
