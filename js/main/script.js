@@ -39,7 +39,7 @@ send.addEventListener(
 
 FrontEnd Demo						March 7, 2024
 
-source: script.js
+source: js/main/script.js
 author: @misael-diaz
 
 Copyright (c) 2024 Misael Díaz-Maldonado

@@ -19,27 +19,8 @@ export const onLoad = async () => {
 }
 
 export const changeEventHandler = (input) => {
-	const file = input.files[0]
-	const reader = new FileReader()
-
-	const loadEventHandler = () => {
-		gcontent = ''
-		gcontent += reader.result
-	}
-
-	reader.addEventListener(
-		"load",
-		() => loadEventHandler(),
-		false
-	)
-
-	if (file) {
-		reader.readAsText(file)
-	}
-}
-
-export const cancelEventHandler = () => {
-	return
+	gcontent = input.value
+	console.log(gcontent)
 }
 
 export const clickEventHandler = async (e) => {
@@ -48,7 +29,7 @@ export const clickEventHandler = async (e) => {
 		return
 	}
 	const status = document.getElementById("status")
-	const url = "http://localhost:8080/api/lmp/run"
+	const url = "http://localhost:8080/api/sys/run"
 	const opt = {
 		method: "POST",
 		mode: "cors",
@@ -59,6 +40,22 @@ export const clickEventHandler = async (e) => {
 	}
 	try {
 		const response = await fetch(url, opt)
+		// route does not yet exist so we handle the *expected* error
+		if (response.status >= 400 && response.status < 600) {
+			const errmsg = [
+				`Server Error:`,
+				`${response.status}`,
+				`Route`,
+				`${response.statusText}`
+			].join(' ')
+			status.innerHTML = errmsg
+			status.style.color = 'red'
+			status.style['border-style'] = 'solid'
+			status.style['border-width'] = 'thin'
+			status.style['border-color'] = 'red'
+			status.style['background-color'] = 'lightred'
+			return
+		}
 		const data = await response.json()
 		console.log(data)
 		const { input } = data
@@ -72,7 +69,7 @@ export const clickEventHandler = async (e) => {
 		output.style['border-width'] = 'thin'
 		output.style['border-color'] = 'black'
 		output.style['background-color'] = 'black'
-		status.innerHTML = "successful file upload"
+		status.innerHTML = "successful command execution"
 		status.style.color = 'blue'
 		status.style['border-style'] = 'solid'
 		status.style['border-width'] = 'thin'
@@ -97,7 +94,7 @@ export const clickEventHandler = async (e) => {
 
 FrontEnd Demo						March 7, 2024
 
-source: module.js
+source: js/system/module.js
 author: @misael-diaz
 
 Copyright (c) 2024 Misael Díaz-Maldonado
