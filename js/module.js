@@ -7,6 +7,9 @@ export const onLoad = async () => {
 		const response = await fetch("http://localhost:8080/")
 		const data = await response.json()
 		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>"
+		setTimeout(() => {
+			message.style.opacity = 0
+		}, 4000)
 		console.log("done")
 		console.log(data)
 	} catch (err) {
@@ -58,13 +61,27 @@ export const clickEventHandler = async (e) => {
 		const response = await fetch(url, opt)
 		const data = await response.json()
 		console.log(data)
-		gcontent = ''
+		const { input } = data
+		const head = document.getElementById("head")
+		head.innerHTML = '<b>NodeAPI Response</b>'
+		const output = document.getElementById("output")
+		output.innerHTML = `<pre>${input}</pre>`
+		output.style.color = 'lightgreen'
+		output.style['font-family'] = 'Monospace'
+		output.style['border-style'] = 'solid'
+		output.style['border-width'] = 'thin'
+		output.style['border-color'] = 'black'
+		output.style['background-color'] = 'black'
 		status.innerHTML = "successful file upload"
 		status.style.color = 'blue'
 		status.style['border-style'] = 'solid'
 		status.style['border-width'] = 'thin'
 		status.style['border-color'] = 'blue'
 		status.style['background-color'] = 'lightblue'
+		setTimeout(() => {
+			status.style.opacity = 0
+		}, 1800)
+		gcontent = ''
 	} catch (err) {
 		console.log(`${err}`)
 		status.innerHTML = `error: ${err.message}`
