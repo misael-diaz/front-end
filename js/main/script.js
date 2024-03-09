@@ -1,4 +1,4 @@
-import { changeEventHandler, cancelEventHandler, clickEventHandler } from "./module.js"
+import { inputEventHandler, cancelEventHandler, clickEventHandler } from "./module.js"
 import { onLoad } from "./module.js"
 
 window.addEventListener(
@@ -11,9 +11,9 @@ window.addEventListener(
 
 const input = document.querySelector("input")
 input.addEventListener(
-	"change",
+	"input",
 	() => {
-		changeEventHandler(input)
+		inputEventHandler(input)
 	},
 	false
 )

@@ -19,7 +19,7 @@ export const onLoad = async () => {
 	}
 }
 
-export const changeEventHandler = (input) => {
+export const inputEventHandler = (input) => {
 	const file = input.files[0]
 	const reader = new FileReader()
 
@@ -61,13 +61,13 @@ export const clickEventHandler = async (e) => {
 	}
 	try {
 		const response = await fetch(url, opt)
-		const data = await response.json()
-		console.log(data)
-		const { input } = data
+		const json = await response.json()
+		console.log(json)
+		const input = document.querySelector('input')
 		const head = document.getElementById("head")
 		head.innerHTML = '<b>NodeAPI Response</b>'
 		const output = document.getElementById("output")
-		output.innerHTML = `<pre>${input}</pre>`
+		output.innerHTML = `<pre>${json.input}</pre>`
 		output.style.color = 'lightgreen'
 		output.style['font-family'] = 'Monospace'
 		output.style['border-style'] = 'solid'
@@ -85,6 +85,7 @@ export const clickEventHandler = async (e) => {
 			status.style.opacity = 0
 		}, 1800)
 		gcontent = ''
+		input.value = ''
 	} catch (err) {
 		console.log(`${err}`)
 		status.innerHTML = `error: ${err.message}`
