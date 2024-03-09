@@ -7,6 +7,7 @@ export const onLoad = async () => {
 		const response = await fetch("http://localhost:8080/")
 		const data = await response.json()
 		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>"
+		message.style.opacity = 1
 		setTimeout(() => {
 			message.style.opacity = 0
 		}, 4000)
@@ -18,7 +19,7 @@ export const onLoad = async () => {
 	}
 }
 
-export const changeEventHandler = (input) => {
+export const inputEventHandler = (input) => {
 	const file = input.files[0]
 	const reader = new FileReader()
 
@@ -45,6 +46,7 @@ export const cancelEventHandler = () => {
 export const clickEventHandler = async (e) => {
 	e.preventDefault()
 	if (gcontent.length === 0) {
+		console.log(`clickEventHandler: empty string`)
 		return
 	}
 	const status = document.getElementById("status")
@@ -59,13 +61,13 @@ export const clickEventHandler = async (e) => {
 	}
 	try {
 		const response = await fetch(url, opt)
-		const data = await response.json()
-		console.log(data)
-		const { input } = data
+		const json = await response.json()
+		console.log(json)
+		const input = document.querySelector('input')
 		const head = document.getElementById("head")
 		head.innerHTML = '<b>NodeAPI Response</b>'
 		const output = document.getElementById("output")
-		output.innerHTML = `<pre>${input}</pre>`
+		output.innerHTML = `<pre>${json.input}</pre>`
 		output.style.color = 'lightgreen'
 		output.style['font-family'] = 'Monospace'
 		output.style['border-style'] = 'solid'
@@ -78,10 +80,12 @@ export const clickEventHandler = async (e) => {
 		status.style['border-width'] = 'thin'
 		status.style['border-color'] = 'blue'
 		status.style['background-color'] = 'lightblue'
+		status.style.opacity = 1
 		setTimeout(() => {
 			status.style.opacity = 0
 		}, 1800)
 		gcontent = ''
+		input.value = ''
 	} catch (err) {
 		console.log(`${err}`)
 		status.innerHTML = `error: ${err.message}`
@@ -90,6 +94,7 @@ export const clickEventHandler = async (e) => {
 		status.style['border-width'] = 'thin'
 		status.style['border-color'] = 'red'
 		status.style['background-color'] = 'lightred'
+		status.style.opacity = 1
 	}
 }
 
