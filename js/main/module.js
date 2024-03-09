@@ -46,6 +46,7 @@ export const cancelEventHandler = () => {
 export const clickEventHandler = async (e) => {
 	e.preventDefault()
 	if (gcontent.length === 0) {
+		console.log(`clickEventHandler: empty string`)
 		return
 	}
 	const status = document.getElementById("status")
