@@ -7,6 +7,7 @@ export const onLoad = async () => {
 		const response = await fetch("http://localhost:8080/")
 		const data = await response.json()
 		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>"
+		message.style.opacity = 1
 		setTimeout(() => {
 			message.style.opacity = 0
 		}, 4000)
@@ -78,6 +79,7 @@ export const clickEventHandler = async (e) => {
 		status.style['border-width'] = 'thin'
 		status.style['border-color'] = 'blue'
 		status.style['background-color'] = 'lightblue'
+		status.style.opacity = 1
 		setTimeout(() => {
 			status.style.opacity = 0
 		}, 1800)
@@ -90,6 +92,7 @@ export const clickEventHandler = async (e) => {
 		status.style['border-width'] = 'thin'
 		status.style['border-color'] = 'red'
 		status.style['background-color'] = 'lightred'
+		status.style.opacity = 1
 	}
 }
 
