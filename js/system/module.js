@@ -18,9 +18,53 @@ export const onLoad = async () => {
 	}
 }
 
-export const changeEventHandler = (input) => {
+export const inputEventHandler = (input) => {
 	gcontent = input.value
 	console.log(gcontent)
+}
+
+const invalidCMD = (responseJSON) => {
+	const json = responseJSON
+	const input = document.querySelector('input')
+	const status = document.getElementById('status')
+	status.innerHTML = `Invalid or Unsupported System Command`
+	status.style.color = 'red'
+	status.style['border-style'] = 'solid'
+	status.style['border-width'] = 'thin'
+	status.style['border-color'] = 'red'
+	status.style['background-color'] = 'lightred'
+	status.style.opacity = 1
+	input.value = ''
+	return
+}
+
+const validCMD = (responseJSON) => {
+	const json = responseJSON
+	const { message, data } = json
+	const input = document.querySelector('input')
+	const status = document.getElementById('status')
+	const head = document.getElementById('head')
+	const output = document.getElementById('output')
+	head.innerHTML = '<b>System Command</b>'
+	output.innerHTML = `<pre>${data}</pre>`
+	output.style.color = 'lightgreen'
+	output.style['font-family'] = 'Monospace'
+	output.style['border-style'] = 'solid'
+	output.style['border-width'] = 'thin'
+	output.style['border-color'] = 'black'
+	output.style['background-color'] = 'black'
+	status.innerHTML = "Successful Command Execution"
+	status.style.color = 'blue'
+	status.style['border-style'] = 'solid'
+	status.style['border-width'] = 'thin'
+	status.style['border-color'] = 'blue'
+	status.style['background-color'] = 'lightblue'
+	status.style.opacity = 1
+	setTimeout(() => {
+		status.style.opacity = 0
+	}, 1800)
+	gcontent = ''
+	input.value = ''
 }
 
 export const clickEventHandler = async (e) => {
@@ -41,44 +85,14 @@ export const clickEventHandler = async (e) => {
 	try {
 		const response = await fetch(url, opt)
 		// route does not yet exist so we handle the *expected* error
-		if (response.status >= 400 && response.status < 600) {
-			const errmsg = [
-				`Server Error:`,
-				`${response.status}`,
-				`Route`,
-				`${response.statusText}`
-			].join(' ')
-			status.innerHTML = errmsg
-			status.style.color = 'red'
-			status.style['border-style'] = 'solid'
-			status.style['border-width'] = 'thin'
-			status.style['border-color'] = 'red'
-			status.style['background-color'] = 'lightred'
+		const json = await response.json()
+		console.log(json)
+		const { message, data } = json
+		if (data.length === 0) {
+			invalidCMD(json)
 			return
 		}
-		const data = await response.json()
-		console.log(data)
-		const { input } = data
-		const head = document.getElementById("head")
-		head.innerHTML = '<b>NodeAPI Response</b>'
-		const output = document.getElementById("output")
-		output.innerHTML = `<pre>${input}</pre>`
-		output.style.color = 'lightgreen'
-		output.style['font-family'] = 'Monospace'
-		output.style['border-style'] = 'solid'
-		output.style['border-width'] = 'thin'
-		output.style['border-color'] = 'black'
-		output.style['background-color'] = 'black'
-		status.innerHTML = "successful command execution"
-		status.style.color = 'blue'
-		status.style['border-style'] = 'solid'
-		status.style['border-width'] = 'thin'
-		status.style['border-color'] = 'blue'
-		status.style['background-color'] = 'lightblue'
-		setTimeout(() => {
-			status.style.opacity = 0
-		}, 1800)
-		gcontent = ''
+		validCMD(json)
 	} catch (err) {
 		console.log(`${err}`)
 		status.innerHTML = `error: ${err.message}`
