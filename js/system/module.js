@@ -32,10 +32,9 @@ const invalidCMD = (responseJSON) => {
 	status.style['border-style'] = 'solid'
 	status.style['border-width'] = 'thin'
 	status.style['border-color'] = 'red'
-	status.style['background-color'] = 'lightred'
+	status.style['background-color'] = 'lightpink'
 	status.style.opacity = 1
 	input.value = ''
-	return
 }
 
 const validCMD = (responseJSON) => {
@@ -100,7 +99,7 @@ export const clickEventHandler = async (e) => {
 		status.style['border-style'] = 'solid'
 		status.style['border-width'] = 'thin'
 		status.style['border-color'] = 'red'
-		status.style['background-color'] = 'lightred'
+		status.style['background-color'] = 'lightpink'
 	}
 }
 
