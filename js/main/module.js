@@ -1,6 +1,8 @@
+export { onLoad, inputEventHandler, cancelEventHandler, clickEventHandler };
+
 let gcontent = ''
 
-export const onLoad = async () => {
+const onLoad = async () => {
 	const message = document.getElementById("message")
 	try {
 		console.log("checking NodeAPI availability ...")
@@ -19,7 +21,7 @@ export const onLoad = async () => {
 	}
 }
 
-export const inputEventHandler = (input) => {
+const inputEventHandler = (input) => {
 	const file = input.files[0]
 	const reader = new FileReader()
 
@@ -39,11 +41,11 @@ export const inputEventHandler = (input) => {
 	}
 }
 
-export const cancelEventHandler = () => {
+const cancelEventHandler = () => {
 	return
 }
 
-export const clickEventHandler = async (e) => {
+const clickEventHandler = async (e) => {
 	e.preventDefault()
 	if (gcontent.length === 0) {
 		console.log(`clickEventHandler: empty string`)

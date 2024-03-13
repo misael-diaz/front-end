@@ -1,6 +1,8 @@
+export { onLoad, inputEventHandler, clickEventHandler };
+
 let gcontent = ''
 
-export const onLoad = async () => {
+const onLoad = async () => {
 	const message = document.getElementById("message")
 	try {
 		console.log("checking NodeAPI availability ...")
@@ -18,7 +20,7 @@ export const onLoad = async () => {
 	}
 }
 
-export const inputEventHandler = (input) => {
+const inputEventHandler = (input) => {
 	gcontent = input.value
 	console.log(gcontent)
 }
@@ -66,7 +68,7 @@ const validCMD = (responseJSON) => {
 	input.value = ''
 }
 
-export const clickEventHandler = async (e) => {
+const clickEventHandler = async (e) => {
 	e.preventDefault()
 	if (gcontent.length === 0) {
 		return
