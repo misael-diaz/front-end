@@ -1,39 +1,39 @@
-import { inputEventHandler, cancelEventHandler, clickEventHandler } from "./module.js"
-import { onLoad } from "./module.js"
+import { inputEventHandler, cancelEventHandler, clickEventHandler } from "./module.js";
+import { onLoad } from "./module.js";
 
 window.addEventListener(
 	"load",
 	() => {
-		onLoad()
+		onLoad();
 	},
 	false
-)
+);
 
-const input = document.querySelector("input")
+const input = document.querySelector("input");
 input.addEventListener(
 	"input",
 	() => {
-		inputEventHandler(input)
+		inputEventHandler(input);
 	},
 	false
-)
+);
 
 input.addEventListener(
 	"cancel",
 	() => {
-		cancelEventHandler()
+		cancelEventHandler();
 	},
 	false
-)
+);
 
-const send = document.querySelector("#send")
+const send = document.querySelector("#send");
 send.addEventListener(
 	"click",
 	async (e) => {
-		await clickEventHandler(e)
+		await clickEventHandler(e);
 	},
 	false
-)
+);
 
 /*
 

@@ -1,37 +1,37 @@
-import { inputEventHandler, clickEventHandler } from "./module.js"
-import { onLoad } from "./module.js"
+import { inputEventHandler, clickEventHandler } from "./module.js";
+import { onLoad } from "./module.js";
 
 window.addEventListener(
 	"load",
 	() => {
-		onLoad()
+		onLoad();
 	},
 	false
-)
+);
 
-const input = document.querySelector("input")
+const input = document.querySelector("input");
 input.addEventListener(
 	"input",
 	() => {
-		inputEventHandler(input)
+		inputEventHandler(input);
 	},
 	false
-)
+);
 
-const exec = document.querySelector("#execute")
+const exec = document.querySelector("#execute");
 exec.addEventListener(
 	"click",
 	async (e) => {
-		await clickEventHandler(e)
+		await clickEventHandler(e);
 	},
 	false
-)
+);
 
 /*
 
 FrontEnd Demo						March 7, 2024
 
-source: js/main/script.js
+source: js/system/script.js
 author: @misael-diaz
 
 Copyright (c) 2024 Misael Díaz-Maldonado

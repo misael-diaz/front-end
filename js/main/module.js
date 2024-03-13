@@ -1,56 +1,58 @@
-let gcontent = ''
+export { onLoad, inputEventHandler, cancelEventHandler, clickEventHandler };
 
-export const onLoad = async () => {
-	const message = document.getElementById("message")
+let gcontent = '';
+
+const onLoad = async () => {
+	const message = document.getElementById("message");
 	try {
-		console.log("checking NodeAPI availability ...")
-		const response = await fetch("http://localhost:8080/")
-		const data = await response.json()
-		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>"
-		message.style.opacity = 1
+		console.log("checking NodeAPI availability ...");
+		const response = await fetch("http://localhost:8080/");
+		const data = await response.json();
+		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>";
+		message.style.opacity = 1;
 		setTimeout(() => {
-			message.style.opacity = 0
-		}, 4000)
-		console.log("done")
-		console.log(data)
+			message.style.opacity = 0;
+		}, 4000);
+		console.log("done");
+		console.log(data);
 	} catch (err) {
-		message.innerHTML = "NodeAPI: <strong style='color:red'>offline</strong>"
-		console.log(`caught error: ${err.message}`)
+		message.innerHTML = "NodeAPI: <strong style='color:red'>offline</strong>";
+		console.log(`caught error: ${err.message}`);
 	}
-}
+};
 
-export const inputEventHandler = (input) => {
-	const file = input.files[0]
-	const reader = new FileReader()
+const inputEventHandler = (input) => {
+	const file = input.files[0];
+	const reader = new FileReader();
 
 	const loadEventHandler = () => {
-		gcontent = ''
-		gcontent += reader.result
-	}
+		gcontent = '';
+		gcontent += reader.result;
+	};
 
 	reader.addEventListener(
 		"load",
 		() => loadEventHandler(),
 		false
-	)
+	);
 
 	if (file) {
-		reader.readAsText(file)
+		reader.readAsText(file);
 	}
-}
+};
 
-export const cancelEventHandler = () => {
-	return
-}
+const cancelEventHandler = () => {
+	return;
+};
 
-export const clickEventHandler = async (e) => {
-	e.preventDefault()
+const clickEventHandler = async (e) => {
+	e.preventDefault();
 	if (gcontent.length === 0) {
-		console.log(`clickEventHandler: empty string`)
-		return
+		console.log(`clickEventHandler: empty string`);
+		return;
 	}
-	const status = document.getElementById("status")
-	const url = "http://localhost:8080/api/lmp/run"
+	const status = document.getElementById("status");
+	const url = "http://localhost:8080/api/lmp/run";
 	const opt = {
 		method: "POST",
 		mode: "cors",
@@ -60,43 +62,43 @@ export const clickEventHandler = async (e) => {
 		body: gcontent
 	}
 	try {
-		const response = await fetch(url, opt)
-		const json = await response.json()
-		console.log(json)
-		const input = document.querySelector('input')
-		const head = document.getElementById("head")
-		head.innerHTML = '<b>NodeAPI Response</b>'
-		const output = document.getElementById("output")
-		output.innerHTML = `<pre>${json.input}</pre>`
-		output.style.color = 'lightgreen'
-		output.style['font-family'] = 'Monospace'
-		output.style['border-style'] = 'solid'
-		output.style['border-width'] = 'thin'
-		output.style['border-color'] = 'black'
-		output.style['background-color'] = 'black'
-		status.innerHTML = "successful file upload"
-		status.style.color = 'blue'
-		status.style['border-style'] = 'solid'
-		status.style['border-width'] = 'thin'
-		status.style['border-color'] = 'blue'
-		status.style['background-color'] = 'lightblue'
-		status.style.opacity = 1
+		const response = await fetch(url, opt);
+		const json = await response.json();
+		console.log(json);
+		const input = document.querySelector('input');
+		const head = document.getElementById("head");
+		head.innerHTML = '<b>NodeAPI Response</b>';
+		const output = document.getElementById("output");
+		output.innerHTML = `<pre>${json.input}</pre>`;
+		output.style.color = 'lightgreen';
+		output.style['font-family'] = 'Monospace';
+		output.style['border-style'] = 'solid';
+		output.style['border-width'] = 'thin';
+		output.style['border-color'] = 'black';
+		output.style['background-color'] = 'black';
+		status.innerHTML = "successful file upload";
+		status.style.color = 'blue';
+		status.style['border-style'] = 'solid';
+		status.style['border-width'] = 'thin';
+		status.style['border-color'] = 'blue';
+		status.style['background-color'] = 'lightblue';
+		status.style.opacity = 1;
 		setTimeout(() => {
-			status.style.opacity = 0
-		}, 1800)
-		gcontent = ''
-		input.value = ''
+			status.style.opacity = 0;
+		}, 1800);
+		gcontent = '';
+		input.value = '';
 	} catch (err) {
-		console.log(`${err}`)
-		status.innerHTML = `error: ${err.message}`
-		status.style.color = 'red'
-		status.style['border-style'] = 'solid'
-		status.style['border-width'] = 'thin'
-		status.style['border-color'] = 'red'
-		status.style['background-color'] = 'lightpink'
-		status.style.opacity = 1
+		console.log(`${err}`);
+		status.innerHTML = `error: ${err.message}`;
+		status.style.color = 'red';
+		status.style['border-style'] = 'solid';
+		status.style['border-width'] = 'thin';
+		status.style['border-color'] = 'red';
+		status.style['background-color'] = 'lightpink';
+		status.style.opacity = 1;
 	}
-}
+};
 
 /*
 
