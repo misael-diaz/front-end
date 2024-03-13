@@ -85,7 +85,6 @@ const clickEventHandler = async (e) => {
 	};
 	try {
 		const response = await fetch(url, opt);
-		// route does not yet exist so we handle the *expected* error;
 		const json = await response.json();
 		console.log(json);
 		const { message, data } = json;
