@@ -1,6 +1,6 @@
-import { clickEventHandler } from "./module.js"
+import { clickEventHandler } from "./module.js";
 
-const signup = document.querySelector('button')
+const signup = document.querySelector('button');
 signup.addEventListener(
 	"click",
 	(e) => {
