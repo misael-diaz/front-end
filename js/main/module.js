@@ -19,7 +19,7 @@ const onLoad = async () => {
 		message.innerHTML = "NodeAPI: <strong style='color:red'>offline</strong>";
 		console.log(`caught error: ${err.message}`);
 	}
-}
+};
 
 const inputEventHandler = (input) => {
 	const file = input.files[0];
@@ -28,7 +28,7 @@ const inputEventHandler = (input) => {
 	const loadEventHandler = () => {
 		gcontent = '';
 		gcontent += reader.result;
-	}
+	};
 
 	reader.addEventListener(
 		"load",
@@ -39,11 +39,11 @@ const inputEventHandler = (input) => {
 	if (file) {
 		reader.readAsText(file);
 	}
-}
+};
 
 const cancelEventHandler = () => {
 	return;
-}
+};
 
 const clickEventHandler = async (e) => {
 	e.preventDefault();
@@ -98,7 +98,7 @@ const clickEventHandler = async (e) => {
 		status.style['background-color'] = 'lightpink';
 		status.style.opacity = 1;
 	}
-}
+};
 
 /*
 
