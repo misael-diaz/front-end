@@ -34,7 +34,7 @@ const inputs = () => {
 	return true;
 }
 
-const password = () => {
+const passwords = () => {
 
 	const p = document.getElementById('password').value;
 	const pc = document.getElementById('password-confirmation').value;
@@ -49,7 +49,7 @@ const password = () => {
 	return true;
 }
 
-const clickEventHandler = (e) => {
+const clickEventHandler = async (e) => {
 
 	e.preventDefault();
 
@@ -57,13 +57,41 @@ const clickEventHandler = (e) => {
 		return;
 	}
 
-	if (!password()) {
+	if (!passwords()) {
 		return;
 	}
 
-	const errmsg = document.getElementById('error-message');
-	errmsg.innerHTML = '';
-	errmsg.style.opacity = 0;
+	const firstname = document.getElementById('firstname').value;
+	const lastname = document.getElementById('lastname').value;
+	const username = document.getElementById('username').value;
+	const email = document.getElementById('email').value;
+	const password = document.getElementById('password').value;
+	const credentials = { firstname, lastname, username, email, password };
+	console.log(credentials);
+	const url = "http://localhost:8080/api/usr/signup";
+	const opt = {
+		method: "POST",
+		mode: "cors",
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body: JSON.stringify(credentials)
+	};
+	try {
+		const response = await fetch(url, opt);
+		const json = await response.json();
+		console.log(json);
+		const message = document.getElementById('message');
+		const errmsg = document.getElementById('error-message');
+		message.innerHTML = `successful email send to ${email}`
+		errmsg.innerHTML = '';
+		errmsg.style.opacity = 0;
+	} catch (err) {
+		console.error(`error: ${err}`);
+		const errmsg = document.getElementById('error-message');
+		errmsg.innerHTML = `error: ${err}`;
+		errmsg.style.opacity = 1;
+	}
 }
 
 /*
