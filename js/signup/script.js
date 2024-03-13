@@ -13,7 +13,7 @@ signup.addEventListener(
 
 FrontEnd Demo						March 7, 2024
 
-source: js/main/script.js
+source: js/signup/script.js
 author: @misael-diaz
 
 Copyright (c) 2024 Misael Díaz-Maldonado
