@@ -1,11 +1,25 @@
 export { clickEventHandler };
 
+const map = (prop) => {
+
+	const map = {
+		"firstname": "First Name",
+		"lastname": "Last Name",
+		"username": "Username",
+		"email": "Email",
+		"password": "Password",
+		"password-confirmation": "Password Confirmation"
+	};
+
+	return map[prop];
+}
+
 const check = (fieldname) => {
 
 	const value = document.getElementById(fieldname).value;
 	if (value.length === 0) {
 		const errmsg = document.getElementById('error-message');
-		errmsg.innerHTML = `requires ${fieldname}`;
+		errmsg.innerHTML = `requires ${map(fieldname)}`;
 		errmsg.style.opacity = 1;
 		return false;
 	}
