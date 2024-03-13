@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSM | Signup</title>
     <link rel="stylesheet" href="css/style.css"/>
+    <script type="module" src="js/signup/module.js"></script>
+    <script type="module" src="js/signup/script.js"></script>
   </head>
   <body>
     <main class="container">
@@ -23,31 +25,54 @@
 	<section>
 	  <form class="form">
 	    <p>
-	    <label>First Name</label>
-	    <input type="text" class="input" placeholder="First Name"/>
+	    <label for="firstname">First Name</label>
+	    <input type="text"
+		   class="input"
+		   placeholder="First Name"
+		   id="firstname"
+		   required/>
 	    </p>
 	    <p>
-	    <label>Last Name</label>
-	    <input type="text" class="input" placeholder="Last Name"/>
+	    <label for="lastname">Last Name</label>
+	    <input type="text"
+		   class="input"
+		   placeholder="Last Name"
+		   id="lastname"
+		   required/>
 	    </p>
 	    <p class="username">
-	    <label>Username</label>
-	    <input type="text" class="input" placeholder="Username"/>
+	    <label for="username">Username</label>
+	    <input type="text"
+		   class="input"
+		   placeholder="Username"
+		   id="username"
+		   autocomplete="off"
+		   required/>
 	    </p>
 	    <p>
-	    <label>Email</label>
-	    <input type="email" class="input" placeholder="Email"/>
+	    <label for="email">Email</label>
+	    <input type="email"
+		   class="input"
+		   placeholder="Email"
+		   id="email"
+		   autocomplete="off"
+		   required/>
 	    </p>
 	    <p>
-	    <label>Password</label>
-	    <input type="password" class="input" placeholder="Password"/>
+	    <label for="password">Password</label>
+	    <input type="password"
+		   class="input"
+		   placeholder="Password"
+		   id="password"
+		   required/>
 	    </p>
 	    <p>
-	    <label>Password Confirmation</label>
+	    <label for="password-confirmation">Password Confirmation</label>
 	    <input type="password"
 		   class="input"
 		   placeholder="Password Confirmation"
-		   />
+		   id="password-confirmation"
+		   required/>
 	    </p>
 	  </form>
 	</section>
@@ -58,6 +83,8 @@
 	  <a class="link" href="index.html">Login</a>
 	  </p>
 	</footer>
+	<div class="error" id="error-message">
+	</div>
       </div>
     </main>
   </body>
