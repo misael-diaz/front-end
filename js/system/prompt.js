@@ -1,31 +1,31 @@
-import { inputEventHandler, clickEventHandler } from "./module.js"
-import { onLoad } from "./module.js"
+import { inputEventHandler, clickEventHandler } from "./module.js";
+import { onLoad } from "./module.js";
 
 window.addEventListener(
 	"load",
 	() => {
-		onLoad()
+		onLoad();
 	},
 	false
-)
+);
 
-const input = document.querySelector("input")
+const input = document.querySelector("input");
 input.addEventListener(
 	"input",
 	() => {
-		inputEventHandler(input)
+		inputEventHandler(input);
 	},
 	false
-)
+);
 
-const exec = document.querySelector("#execute")
+const exec = document.querySelector("#execute");
 exec.addEventListener(
 	"click",
 	async (e) => {
-		await clickEventHandler(e)
+		await clickEventHandler(e);
 	},
 	false
-)
+);
 
 /*
 
