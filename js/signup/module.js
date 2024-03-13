@@ -12,7 +12,7 @@ const map = (prop) => {
 	};
 
 	return map[prop];
-}
+};
 
 const check = (fieldname) => {
 
@@ -25,8 +25,8 @@ const check = (fieldname) => {
 	}
 
 	console.log(`${fieldname}: ${value}`);
-	return true
-}
+	return true;
+};
 
 const inputs = () => {
 
@@ -46,7 +46,7 @@ const inputs = () => {
 	}
 
 	return true;
-}
+};
 
 const passwords = () => {
 
@@ -61,7 +61,7 @@ const passwords = () => {
 
 	console.log(`passwords ${p} and ${pc} match`);
 	return true;
-}
+};
 
 const clickEventHandler = async (e) => {
 
@@ -97,7 +97,7 @@ const clickEventHandler = async (e) => {
 		console.log(json);
 		const message = document.getElementById('message');
 		const errmsg = document.getElementById('error-message');
-		message.innerHTML = `successful email send to ${email}`
+		message.innerHTML = `successful email send to ${email}`;
 		errmsg.innerHTML = '';
 		errmsg.style.opacity = 0;
 	} catch (err) {
@@ -106,7 +106,7 @@ const clickEventHandler = async (e) => {
 		errmsg.innerHTML = `error: ${err}`;
 		errmsg.style.opacity = 1;
 	}
-}
+};
 
 /*
 
