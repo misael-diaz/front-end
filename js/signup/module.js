@@ -81,7 +81,7 @@ const clickEventHandler = async (e) => {
 	const username = document.getElementById('username').value;
 	const email = document.getElementById('email').value;
 	const password = document.getElementById('password').value;
-	const code = random();
+	const code = random().toString().padStart(8, '0');
 	const credentials = { firstname, lastname, username, email, password, code };
 	console.log(credentials);
 	const url = "http://localhost:8080/api/usr/signup";
