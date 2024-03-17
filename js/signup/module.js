@@ -102,6 +102,9 @@ const clickEventHandler = async (e) => {
 		message.innerHTML = `successful email send to ${email}`;
 		errmsg.innerHTML = '';
 		errmsg.style.opacity = 0;
+		setTimeout(() => {
+			window.location.replace('confirmation.html');
+		}, 2000);
 	} catch (err) {
 		console.error(`error: ${err}`);
 		const errmsg = document.getElementById('error-message');
