@@ -97,6 +97,7 @@ const clickEventHandler = async (e) => {
 		const response = await fetch(url, opt);
 		const json = await response.json();
 		console.log(json);
+		window.sessionStorage.setItem("credentials", JSON.stringify(credentials));
 		const message = document.getElementById('message');
 		const errmsg = document.getElementById('error-message');
 		message.innerHTML = `successful email send to ${email}`;
