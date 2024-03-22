@@ -39,6 +39,12 @@ const inputEventHandler = (input) => {
 	if (file) {
 		reader.readAsText(file);
 	}
+
+	reader.removeEventListener(
+		"load",
+		() => loadEventHandler(),
+		false
+	);
 };
 
 const cancelEventHandler = () => {
