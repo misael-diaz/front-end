@@ -1,24 +1,39 @@
 export { clickEventHandler };
 
+let locked = false;
+let confirmed = false;
+
 const clickEventHandler = async (e) => {
 	e.preventDefault();
+
+	if (locked || confirmed) {
+		console.log('locked');
+		return;
+	}
+
 	const code = document.getElementById('code').value;
 	const credentials = JSON.parse(window.sessionStorage.getItem("credentials"));
 	if (code.length === 0) {
 		const err = 'expects code input';
+		const message = document.getElementById('message');
 		const errmsg = document.getElementById('error-message');
 		errmsg.innerHTML = `error: ${err}`;
 		errmsg.style.opacity = 1;
+		message.style.opacity = 0;
 		console.error(`error: ${err}`);
+		locked = false;
 		return;
 	}
 
 	if (code !== credentials.code) {
 		const err = `wrong code`;
+		const message = document.getElementById('message');
 		const errmsg = document.getElementById('error-message');
 		errmsg.innerHTML = `error: ${err}`;
 		errmsg.style.opacity = 1;
+		message.style.opacity = 0;
 		console.error(`error: ${err}`);
+		locked = false;
 		return;
 	}
 
@@ -33,13 +48,27 @@ const clickEventHandler = async (e) => {
 	};
 
 	try {
+		locked = true;
 		const response = await fetch(url, opt);
 		const json = await response.json();
 		console.log(json);
+		confirmed = (response.ok)? true : false;
+		if (!response.ok) {
+			const msg = `account confirmation failed`;
+			const message = document.getElementById('message');
+			const errmsg = document.getElementById('error-message');
+			errmsg.innerHTML = msg;
+			errmsg.style.opacity = 1;
+			message.style.opacity = 0;
+			console.error(`err: ${msg}`);
+			locked = false;
+			return;
+		}
 		const msg = `successful account confirmation`;
 		const message = document.getElementById('message');
 		const errmsg = document.getElementById('error-message');
 		message.innerHTML = msg;
+		message.style.opacity = 1;
 		errmsg.style.opacity = 0;
 		console.log(msg);
 		setTimeout(() => {
@@ -53,6 +82,7 @@ const clickEventHandler = async (e) => {
 		errmsg.innerHTML = `error: ${err}`;
 		errmsg.style.opacity = 1;
 		message.style.opacity = 0;
+		locked = false;
 	}
 };
 
