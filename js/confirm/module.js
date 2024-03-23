@@ -37,7 +37,7 @@ const clickEventHandler = async (e) => {
 		return;
 	}
 
-	const url = "http://localhost:8080/api/usr/confirm";
+	const url = "https://localhost:8080/api/usr/confirm";
 	const opt = {
 		method: "POST",
 		mode: "cors",

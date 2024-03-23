@@ -6,7 +6,7 @@ const onLoad = async () => {
 	const message = document.getElementById("message");
 	try {
 		console.log("checking NodeAPI availability ...");
-		const response = await fetch("http://localhost:8080/");
+		const response = await fetch("https://localhost:8080/");
 		const data = await response.json();
 		message.innerHTML = "NodeAPI: <strong style='color:blue'>online</strong>";
 		message.style.opacity = 1;
@@ -58,7 +58,7 @@ const clickEventHandler = async (e) => {
 		return;
 	}
 	const status = document.getElementById("status");
-	const url = "http://localhost:8080/api/lmp/run";
+	const url = "https://localhost:8080/api/lmp/run";
 	const opt = {
 		method: "POST",
 		mode: "cors",

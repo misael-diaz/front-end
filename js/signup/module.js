@@ -84,7 +84,7 @@ const clickEventHandler = async (e) => {
 	const code = random().toString().padStart(8, '0');
 	const credentials = { firstname, lastname, username, email, password, code };
 	console.log(credentials);
-	const url = "http://localhost:8080/api/usr/signup";
+	const url = "https://localhost:8080/api/usr/signup";
 	const opt = {
 		method: "POST",
 		mode: "cors",
