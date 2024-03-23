@@ -64,7 +64,7 @@ const clickEventHandler = async (e) => {
 	const password = document.getElementById('password').value;
 	const credentials = { email, password };
 	console.log(credentials);
-	const url = "http://localhost:8080/api/usr/login";
+	const url = "https://localhost:8080/api/usr/login";
 	const opt = {
 		method: "POST",
 		mode: "cors",
