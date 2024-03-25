@@ -1,3 +1,5 @@
+*.crt
+*.key
 *.swp
 *.txt
 *.lmp
@@ -5,5 +7,5 @@
 *.png
 *.jpg
 *.jpeg
-Dockerfile
+Dockerfile*
 *TODO*
