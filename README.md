@@ -65,6 +65,6 @@ To execute the vanilla web app use the following command:
 docker container run -it -p 8443:443 --hostname frontend --network webnetwork --name frontend frontend-image 
 ```
 
-We are mapping port the HTTPS reserved port 443 to the port 8443, we are defining the hostname of our container to be `frontend`, we are adding the container to the network `webnetwork`, we are naming the container as `frontend`, and we are referencing the image `frontend-image` that we have just built.
+We are mapping the reserved HTTPS port 443 to 8443, we are defining the hostname of our container to be `frontend`, we are adding the container to the network `webnetwork`, we are naming the container as `frontend`, and we are referencing the image `frontend-image` that we have just built.
 
 Note that for the signin and login pages to be functional the backend needs to be up as well.
