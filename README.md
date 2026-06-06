@@ -59,7 +59,7 @@ note that we have tagged the image as `frontend-image for convenience.
 
 ## Execute
 
-To execute the FastAPI App use the following command:
+To execute the vanilla web app use the following command:
 
 ```sh
 docker container run -it -p 8443:443 --hostname frontend --network webnetwork --name frontend frontend-image 
