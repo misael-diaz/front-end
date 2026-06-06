@@ -62,7 +62,7 @@ note that we have tagged the image as `frontend-image for convenience.
 To execute the FastAPI App use the following command:
 
 ```sh
-docker container run -it -p 443:8443 --hostname frontend --network webnetwork --name frontend frontend-image 
+docker container run -it -p 8443:443 --hostname frontend --network webnetwork --name frontend frontend-image 
 ```
 
 We are mapping port the HTTPS reserved port 443 to the port 8443, we are defining the hostname of our container to be `frontend`, we are adding the container to the network `webnetwork`, we are naming the container as `frontend`, and we are referencing the image `frontend-image` that we have just built.
