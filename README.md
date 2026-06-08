@@ -11,7 +11,7 @@ Nevertheless, I decided to keep the repository as a reference point to go back t
 
 ## Backend Code
 
-The backend code is written in Node.js and it can be found [here](git@github.com:misael-diaz/NodeAPI.git).
+The backend code is written in Node.js and it can be found [here](https://github.com/misael-diaz/NodeAPI.git).
 
 ## Installing Docker
 
