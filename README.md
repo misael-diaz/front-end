@@ -9,6 +9,10 @@ This is the initial solution that I presented for the UI however we decided to n
 
 Nevertheless, I decided to keep the repository as a reference point to go back to what I learned about building vanilla web applications. It is worth mentioning that the [trend](https://talent500.com/blog/developers-ditching-frameworks-for-vanilla-javascript/) is to replace heavy JavaScript frameworks with vanilla code for SEO and for frontend engineers to focus on building engaging and blazingly fast user interfaces faster. I think that the most notorious migration was that by [Netflix](https://medium.com/@kruthish18/why-netflix-moved-from-react-to-vanilla-javascript-and-what-it-means-for-developers-2b8eb087d44f), it replaced its heavy landing page with a leaner one written with vanilla code.
 
+## Backend Code
+
+The backend code is written in Node.js and it can be found [here](git@github.com:misael-diaz/NodeAPI.git).
+
 ## Installing Docker
 
 Installing Docker on Linux is straightforward, on Debian-based distros you may use:
